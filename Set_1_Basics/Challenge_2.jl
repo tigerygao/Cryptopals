@@ -10,8 +10,8 @@ Finished: 12/10/18
 function XOR(bufA, bufB)
     a_byte_arr = hex2bytes(bufA)
     b_byte_arr = hex2bytes(bufB)
-    aXORb = Array{UInt8}(undef, length(a_byte_arr))
     '''
+    aXORb = Array{UInt8}(undef, length(a_byte_arr))
     for i = 1:length(a_byte_arr)
         aXORb[i] = xor(a_byte_arr[i], b_byte_arr[i])
     end
