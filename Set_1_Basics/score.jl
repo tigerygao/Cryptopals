@@ -1,14 +1,3 @@
-#=
-Challenge 3
-Single-byte XOR cipher
-Find the single character key the ciphertext has been XOR'd against and decrypt the message.
-
-Start: 12/10/18
-Finished: 12/10/18
-=#
-
-#Scoring I used is just the number of times the characters "e", "E", "t", "T", "a", "A", "o", "O", "i", "I", "n" or "N" appear in the decryption of the ciphertext under each prospective character key. Basically, seeing how many times the 6 most frequent letter of the English alphabet appears in the prospective plaintext.
-#SHOULD PROBABLY COME BACK TO THIS AND DESIGN AND IMPLEMENT A MORE NOVEL/EFFICIENT SCORING METHOD!!!
 function score(text_bytes)
     num_es = (text_bytes .== 0x65)
     num_Es = (text_bytes .== 0x45)
@@ -41,12 +30,3 @@ function decrypt(ciphert)
     plaint = broadcast(xor, ciphert_bytes, likely_key)
     return plaint
 end
-
-
-function main()
-    ciphertxt = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
-    plaintxt = decrypt(ciphertxt)
-    println(String(plaintxt))
-end
-
-main()
