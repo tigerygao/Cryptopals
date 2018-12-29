@@ -15,6 +15,7 @@ function score(text_bytes)
     return total_es
 end
 
+#Called in Challenge_4.jl
 function decrypt(ciphert)
     ciphert_bytes = hex2bytes(ciphert)
     max_es = -1
@@ -29,4 +30,20 @@ function decrypt(ciphert)
     end
     plaint = broadcast(xor, ciphert_bytes, likely_key)
     return plaint
+end
+
+
+#Called in Challenge_6.jl
+function find_key(ciphert)
+    max_es = -1
+    likely_key = nothing
+    for i in 0:255
+        test_key = UInt8(i)
+        text_bytes = broadcast(xor, ciphert, test_key)
+        if score(text_bytes) > max_es
+            max_es = score(text_bytes)
+            likely_key = test_key
+        end
+    end
+    return likely_key
 end
