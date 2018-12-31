@@ -3,7 +3,7 @@ Challenge 6
 Break repeating-key XOR
 
 Start: 12/11/18
-Finished: 12/11/18
+Finished: 12/30/18
 =#
 
 import Base64.base64decode
