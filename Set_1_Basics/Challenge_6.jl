@@ -45,7 +45,8 @@ end
 
 function decrypt(ciphert)
     guesses = guess_keysize(ciphert)
-    min_score = Inf
+    guesses = [2,29]
+    max_score = -Inf
     likely_key = nothing
     likely_plaint = nothing
     for k in guesses
@@ -80,8 +81,8 @@ function decrypt(ciphert)
         end
 
         plaint = broadcast(xor, ciphert, repeating_key)
-        if score(plaint) < min_score
-            min_score = score(plaint)
+        if score(plaint) > max_score
+            max_score = score(plaint)
             likely_key = key
             likely_plaint = plaint
         end
@@ -100,7 +101,7 @@ function main()
     end
     ciphert = base64decode(strip(ciphert))
     plaint = decrypt(ciphert)
-    #println(String(plaint))
+    println(String(plaint))
 end
 
 main()
