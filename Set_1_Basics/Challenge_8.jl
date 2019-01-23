@@ -2,8 +2,8 @@
 Challenge 8
 Detect AES in ECB mode
 
-Start: 1/22/18
-Finished: 1/22/18
+Start: 1/22/19
+Finished: 1/22/19
 =#
 
 function score(byte_arr)
